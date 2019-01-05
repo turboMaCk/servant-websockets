@@ -1,0 +1,27 @@
+<!doctype HTML>
+<html>
+  <head><title>Websockets issue</title></head>
+  <body>
+    <button onClick="disconnect()">Disconnect</button>
+
+    <script type="text/javascript">
+      var ws = new WebSocket("ws://localhost:3000/stream");
+
+      ws.onopen = function () {
+        console.log('ws connected');
+      };
+
+      ws.onclose = function () {
+        console.log('ws closed');
+      };
+
+      ws.onmessage = function (event) {
+        console.log(event.data);
+      }
+
+      function disconnect() {
+        ws.close();
+      }
+    </script>
+  </body>
+</html>
